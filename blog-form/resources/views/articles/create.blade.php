@@ -1,52 +1,76 @@
 @extends('layouts.app')
 
 @section('content')
-  <h1>Créer un article</h1>
+<div class="max-w-2xl mx-auto bg-white p-8 mt-10 rounded-2xl shadow-lg">
+  <h1 class="text-2xl font-semibold text-gray-800 mb-6 text-center">
+    Créer un article
+  </h1>
 
-  <form method="POST" action="{{ route('articles.store') }}" novalidate>
+  <form method="POST" action="{{ route('articles.store') }}" class="space-y-5">
     @csrf
 
-    <div style="margin-bottom:.75rem;">
-      <label for="title">Titre *</label><br>
-      <input id="title" name="title" type="text"
-             value="{{ old('title') }}" required
-             style="width:100%;padding:.5rem;border:1px solid #ccc;">
+    <!-- Titre -->
+    <div>
+      <label for="title" class="block text-sm font-medium text-gray-700 mb-1">
+        Titre
+      </label>
+      <input
+        id="title"
+        name="title"
+        type="text"
+        value="{{ old('title') }}"
+        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        placeholder="Entrez le titre de l’article"
+      >
       @error('title')
-        <div style="color:#b91c1c;font-size:.9rem;">{{ $message }}</div>
+        <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
       @enderror
     </div>
 
-    <div style="margin-bottom:.75rem;">
-      <label for="slug">Slug</label><br>
-      <input id="slug" name="slug" type="text"
-             value="{{ old('slug') }}" placeholder="ex : mon-super-article"
-             style="width:100%;padding:.5rem;border:1px solid #ccc;">
+    <!-- Slug -->
+    <div>
+      <label for="slug" class="block text-sm font-medium text-gray-700 mb-1">
+        Slug
+      </label>
+      <input
+        id="slug"
+        name="slug"
+        type="text"
+        value="{{ old('slug') }}"
+        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        placeholder="Ex: mon-article-unique"
+      >
       @error('slug')
-        <div style="color:#b91c1c;font-size:.9rem;">{{ $message }}</div>
+        <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
       @enderror
     </div>
 
-    <div style="margin-bottom:.75rem;">
-      <label for="content">Contenu</label><br>
-      <textarea id="content" name="content" rows="6"
-                style="width:100%;padding:.5rem;border:1px solid #ccc;">{{ old('content') }}</textarea>
+    <!-- Contenu -->
+    <div>
+      <label for="content" class="block text-sm font-medium text-gray-700 mb-1">
+        Contenu
+      </label>
+      <textarea
+        id="content"
+        name="content"
+        rows="6"
+        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        placeholder="Écrivez le contenu de l’article..."
+      >{{ old('content') }}</textarea>
       @error('content')
-        <div style="color:#b91c1c;font-size:.9rem;">{{ $message }}</div>
+        <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
       @enderror
     </div>
 
-    <div style="margin-bottom:1rem;">
-      <label for="tags">Tags (séparés par des virgules)</label><br>
-      <input id="tags" name="tags" type="text"
-             value="{{ old('tags') }}" placeholder="php, laravel"
-             style="width:100%;padding:.5rem;border:1px solid #ccc;">
-      @error('tags')
-        <div style="color:#b91c1c;font-size:.9rem;">{{ $message }}</div>
-      @enderror
+    <!-- Bouton -->
+    <div class="text-center">
+      <button
+        type="submit"
+        class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition duration-200"
+      >
+        Enregistrer
+      </button>
     </div>
-
-    <button type="submit" style="padding:.6rem 1rem;background:#111;color:#fff;border:0;">
-      Enregistrer (brouillon)
-    </button>
   </form>
+</div>
 @endsection

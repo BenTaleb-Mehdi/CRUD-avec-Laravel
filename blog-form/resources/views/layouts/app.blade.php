@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <title>{{ $title ?? 'Blog' }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
   <main style="max-width:760px;margin:2rem auto;padding:1rem;">
@@ -15,17 +16,17 @@
       </div>
     @endif
 
-    {{-- Erreurs globales --}}
-    @if ($errors->any())
-      <div style="padding:.75rem;background:#ffe6e6;border:1px solid #f87171;margin-bottom:1rem;">
-        <strong>Veuillez corriger les erreurs suivantes :</strong>
-        <ul style="margin:.5rem 0 0 1rem;">
-          @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-          @endforeach
-        </ul>
-      </div>
-    @endif
+@if ($errors->any())
+  <div class="bg-red-50 border border-red-200 p-3 rounded">
+    <strong>Veuillez corriger les erreurs suivantes :</strong>
+    <ul class="list-disc ml-6">
+      @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+      @endforeach
+    </ul>
+  </div>
+@endif
+
 
     @yield('content')
   </main>
