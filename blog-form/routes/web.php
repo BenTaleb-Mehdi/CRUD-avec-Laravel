@@ -4,6 +4,7 @@ use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Route;
 
 
+
 Route::get('/', fn() => redirect()->route('articles.index'));
 Route::resource('articles', ArticleController::class)->except(['show']);
 
@@ -13,4 +14,4 @@ Route::post('/articles', [ArticleController::class, 'store'])->name('articles.st
 Auth::routes();
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
