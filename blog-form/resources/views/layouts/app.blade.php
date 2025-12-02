@@ -46,6 +46,28 @@
                                 </a>
                             @endif
                         @else
+                        @auth
+                            <div class="flex items-center space-x-4">
+                             
+
+                                <div class="flex items-center space-x-3">
+                                    <span class="text-sm text-gray-700">
+                                        Bonjour, {{ Auth::user()->name }}
+                                    </span>
+
+                                    @if (Auth::user()->is_admin)
+                                        <span class="inline-flex items-center rounded-full bg-red-600 px-2.5 py-0.5 text-xs font-semibold text-white">
+                                            Admin
+                                        </span>
+                                    @else
+                                        <span class="inline-flex items-center rounded-full bg-sky-600 px-2.5 py-0.5 text-xs font-semibold text-white">
+                                            Auteur
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+                        @endauth
+
                             <div class="relative inline-block text-left">
                                 <button type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50"
                                         id="menu-button" aria-expanded="true" aria-haspopup="true" onclick="document.getElementById('dropdown-menu').classList.toggle('hidden')">
