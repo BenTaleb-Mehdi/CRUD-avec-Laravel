@@ -24,8 +24,10 @@ class ArticleController extends Controller
 
     public function store(StoreArticleRequest $request): RedirectResponse
     {
+        
         $data = $request->validated();
         $data['slug'] ??= Str::slug($data['title']);
+        $data['user_id'] = auth()->id();
         Article::create($data);
 
         return redirect()->route('articles.index')
