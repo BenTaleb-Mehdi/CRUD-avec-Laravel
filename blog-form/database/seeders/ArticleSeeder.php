@@ -48,6 +48,7 @@ while (($row = fgetcsv($handle, 1000, ';')) !== false) {
         [
             'title' => $title,
             'excerpt' => $data['excerpt'] ?? null,
+            'content' => $data['content'] ?? null, 
             'views' => (int)($data['views'] ?? 0),
             'published' => filter_var($data['published'] ?? true, FILTER_VALIDATE_BOOL),
             'user_id' => $user->id, // assign a valid user_id

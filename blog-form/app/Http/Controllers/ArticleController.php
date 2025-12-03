@@ -41,6 +41,7 @@ class ArticleController extends Controller
 
     public function update(UpdateArticleRequest $request, Article $article): RedirectResponse
     {
+        
         $data = $request->validated();
         $data['slug'] = $data['slug'] ?: Str::slug($data['title']);
         $article->update($data);
@@ -51,6 +52,7 @@ class ArticleController extends Controller
 
     public function destroy(Article $article): RedirectResponse
     {
+        $this->authorize('delete',$article);
         $article->delete();
         return redirect()->route('articles.index')
             ->with('status', '🗑️ Article supprimé.');

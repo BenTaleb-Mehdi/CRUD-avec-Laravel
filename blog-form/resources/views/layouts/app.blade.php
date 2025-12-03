@@ -16,7 +16,7 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 </head>
-<body class="bg-gray-100 font-sans text-gray-900">
+<body class="font-sans text-gray-900">
     <div id="app">
 
         {{-- Navbar --}}
@@ -100,7 +100,7 @@
         </nav>
 
         {{-- Content --}}
-        <main class="py-10 w-full ">
+        <main class="p-20 w-full  ">
             @yield('content')
         </main>
     </div>
